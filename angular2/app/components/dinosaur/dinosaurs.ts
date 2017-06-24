@@ -3,7 +3,13 @@ import { DinosaurService } from '../../services/dinosaurService';
 
 @Component({
   selector: 'dinosaurs',
-  template: `<ul> <li *ngFor="let user of users"> {{user.firstName}} - {{ user.secondName }} - {{ user.age }}</li> </ul>`
+  template: `<div><ul>
+        <li *ngFor="let user of users">
+            {{user.firstName}} - {{ user.secondName }} - {{ user.age }}
+        </li>
+    </ul>
+            <button (click)="addUser()">add user</button>
+    </div>`
 })
 
 //`<ul> <li *ngFor="let user of users"> {{ user.firstName }}</li> </ul>`
@@ -14,6 +20,16 @@ export class DinosaurComponent implements OnInit {
   usersOlderThan20: any[];
 
   constructor(private dinosaurService: DinosaurService) { }
+
+  addUser() {
+      const user = {
+          firstName: 'Name',
+          secondName: 'Surname',
+          age: 35,
+          email: 'smth@gmail.com'
+      };
+      this.users.push(user);
+  }
 
   getDinos() {
     this.dinosaurService
