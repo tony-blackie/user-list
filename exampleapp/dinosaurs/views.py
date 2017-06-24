@@ -1,6 +1,6 @@
 from rest_framework import viewsets
-from dinosaurs.serializers import DinosaurSerializer
-from dinosaurs.models import Dinosaur
+from dinosaurs.serializers import DinosaurSerializer, UserSerializer
+from dinosaurs.models import Dinosaur, User
 
 
 class DinosaurViewSet(viewsets.ModelViewSet):
@@ -10,3 +10,6 @@ class DinosaurViewSet(viewsets.ModelViewSet):
     queryset = Dinosaur.objects.all()
     serializer_class = DinosaurSerializer
 
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer

@@ -4,7 +4,7 @@ import { DinosaurService } from './services/dinosaurService'
 
 @Component({
   selector: 'my-app',
-  template: `<h1>Hello {{name}}<span *ngIf="itIsJuly">, DjangoCon</span>!</h1>
+  template: `<h1>Hello {{name}}<span *ngIf="!itIsJuly">, DjangoCon</span>!</h1>
               <dinosaurs></dinosaurs>`,
   directives: [DinosaurComponent],
   providers: [DinosaurService]

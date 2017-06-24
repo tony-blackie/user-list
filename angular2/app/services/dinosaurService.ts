@@ -6,6 +6,8 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class DinosaurService {
   private apiURL = 'http://localhost:8000/dinosaurs/?format=json';
+  private hostUrl = 'http://localhost:8000';
+  private formatQuery = '?format=json';
 
   constructor(private http: Http) { }
 
@@ -14,6 +16,13 @@ export class DinosaurService {
               .toPromise()
               .then(response => response.json())
               .catch(this.handleError);
+  }
+
+  getUsers() {
+      return this.http.get(this.hostUrl + '/users/' + this.formatQuery)
+        .toPromise()
+        .then(response => response.json())
+        .catch(this.handleError);
   }
 
   private handleError(error: any) {
