@@ -4,8 +4,9 @@ import { DinosaurService } from '../../services/dinosaurService';
 @Component({
   selector: 'dinosaurs',
   template: `<div><ul>
-        <li *ngFor="let user of users">
+        <li *ngFor="let user of users; let i = index;">
             {{user.firstName}} - {{ user.secondName }} - {{ user.age }}
+            <span (click)="deleteUser(i)">X</span>
         </li>
     </ul>
             <button (click)="addUser()">add user</button>
@@ -29,6 +30,11 @@ export class DinosaurComponent implements OnInit {
           email: 'smth@gmail.com'
       };
       this.users.push(user);
+  }
+
+  deleteUser(index, second) {
+      console.log(index, second);
+      this.users.splice(index, 1);
   }
 
   getDinos() {
