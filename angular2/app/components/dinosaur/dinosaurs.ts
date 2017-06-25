@@ -13,7 +13,6 @@ import { DinosaurService } from '../../services/dinosaurService';
     </div>`
 })
 
-//`<ul> <li *ngFor="let user of users"> {{ user.firstName }}</li> </ul>`
 export class DinosaurComponent implements OnInit {
   dinos: any[];
   error: any;
@@ -32,8 +31,7 @@ export class DinosaurComponent implements OnInit {
       this.users.push(user);
   }
 
-  deleteUser(index, second) {
-      console.log(index, second);
+  deleteUser(index) {
       this.users.splice(index, 1);
   }
 

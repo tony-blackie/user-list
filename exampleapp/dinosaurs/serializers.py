@@ -10,4 +10,4 @@ class DinosaurSerializer(serializers.HyperlinkedModelSerializer):
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
-        fields = ('firstName', 'secondName', 'age', 'email')
+        fields = ('id','firstName', 'secondName', 'age', 'email')
