@@ -1,16 +1,31 @@
 import { Component, OnInit } from '@angular/core';
 import { DinosaurService } from '../../services/dinosaurService';
+import { FormsModule } from '@angular/forms';
+import { NewUser } from './NewUser';
 
 @Component({
   selector: 'dinosaurs',
-  template: `<div><ul>
+  template: `
+<div>
+    <ul>
         <li *ngFor="let user of users; let i = index;">
             {{user.firstName}} - {{ user.secondName }} - {{ user.age }}
             <span (click)="deleteUser(i)">X</span>
         </li>
     </ul>
-            <button (click)="addUser()">add user</button>
-    </div>`
+    <!--form>
+        <label>Name:</label>
+        <input [(ngModel)]="newUser.firstName" />
+        <label>Last name:</label>
+        <input [(ngModel)]="newUser.secondName" />
+        <label>Email:</label>
+        <input [(ngModel)]="newUser.email" />
+        <label>Age:</label>
+        <input [(ngModel)]="newUser.age" />
+    </form-->
+    <button (click)="addUser()">add user</button>
+</div>
+`
 })
 
 export class DinosaurComponent implements OnInit {
@@ -18,17 +33,24 @@ export class DinosaurComponent implements OnInit {
   error: any;
   users: any[];
   usersOlderThan20: any[];
+  newUser: NewUser = {
+    firstName: '',
+    secondName: '',
+    email: '',
+    age: ''
+  };
 
   constructor(private dinosaurService: DinosaurService) { }
 
   addUser() {
-      const user = {
-          firstName: 'Name',
-          secondName: 'Surname',
-          age: 35,
-          email: 'smth@gmail.com'
-      };
-      this.users.push(user);
+      console.log(this.newUser);
+      //const user = {
+      //    firstName: 'Name',
+      //    secondName: 'Surname',
+      //    age: 35,
+      //    email: 'smth@gmail.com'
+      //};
+      //this.users.push(user);
   }
 
   deleteUser(index) {
