@@ -44,13 +44,9 @@ export class DinosaurComponent implements OnInit {
 
   addUser() {
       console.log(this.newUser);
-      //const user = {
-      //    firstName: 'Name',
-      //    secondName: 'Surname',
-      //    age: 35,
-      //    email: 'smth@gmail.com'
-      //};
-      //this.users.push(user);
+      this.dinosaurService
+      .addNewUser(this.newUser)
+      .then(result => console.log(result))
   }
 
   deleteUser(index) {

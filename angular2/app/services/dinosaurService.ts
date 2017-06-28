@@ -31,6 +31,14 @@ export class DinosaurService {
         .catch(this.handleError);
   }
 
+  addNewUser(user) {
+      return this.http.post(
+          this.hostUrl + '/users/',
+          user
+      )
+      .toPromise()
+  }
+
   private handleError(error: any) {
     console.error('An error occurred', error);
     return Promise.reject(error.message || error);
