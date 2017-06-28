@@ -32,7 +32,15 @@ export class DinosaurComponent implements OnInit {
   }
 
   deleteUser(index) {
-      this.users.splice(index, 1);
+      this.dinosaurService
+      .deleteUser(this.users[index])
+      .then((result) => {
+          console.log(result);
+          this.users.splice(index, 1);
+      })
+      .catch((error) => {
+          console.log(error);
+      });
   }
 
   getDinos() {
@@ -52,7 +60,7 @@ export class DinosaurComponent implements OnInit {
                       usersOlderThan20.push(user);
                   }
               });
-              this.users = users
+              this.users = users;
               this.usersOlderThan20 = usersOlderThan20;
           })
         .catch(error => this.error = error);

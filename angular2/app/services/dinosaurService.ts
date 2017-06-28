@@ -18,6 +18,12 @@ export class DinosaurService {
               .catch(this.handleError);
   }
 
+  deleteUser(user) {
+      console.log(user);
+      return this.http.delete(this.hostUrl + '/users/' + user.id)
+      .toPromise()
+  }
+
   getUsers() {
       return this.http.get(this.hostUrl + '/users/' + this.formatQuery)
         .toPromise()
