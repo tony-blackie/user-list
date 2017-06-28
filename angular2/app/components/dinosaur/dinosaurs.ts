@@ -13,7 +13,7 @@ import { NewUser } from './NewUser';
             <span (click)="deleteUser(i)">X</span>
         </li>
     </ul>
-    <!--form>
+    <form>
         <label>Name:</label>
         <input [(ngModel)]="newUser.firstName" />
         <label>Last name:</label>
@@ -22,7 +22,7 @@ import { NewUser } from './NewUser';
         <input [(ngModel)]="newUser.email" />
         <label>Age:</label>
         <input [(ngModel)]="newUser.age" />
-    </form-->
+    </form>
     <button (click)="addUser()">add user</button>
 </div>
 `
