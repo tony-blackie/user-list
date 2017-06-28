@@ -13,9 +13,3 @@ class DinosaurViewSet(viewsets.ModelViewSet):
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-
-def deleteUser(request, id):
-    print(id)
-    if request.GET:
-        print(request.GET)
-    print(request)
