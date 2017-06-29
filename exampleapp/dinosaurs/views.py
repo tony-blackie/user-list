@@ -19,4 +19,8 @@ class UserViewSet(viewsets.ModelViewSet):
         print(self)
         print(request)
         print(pk)
-        User.objects.all()
+
+    def get(self, request, pk=None):
+        print(self)
+        print(request)
+        print(pk)
