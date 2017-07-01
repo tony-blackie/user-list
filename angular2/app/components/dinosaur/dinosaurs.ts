@@ -9,7 +9,7 @@ import { NewUser } from './NewUser';
 <div>
     <ul>
         <li *ngFor="let user of users; let i = index;">
-            <span (click)="updateUser(i)">
+            <span (click)="fillFormWithUserData(i)">
                 {{user.firstName}} - {{ user.lastName }} - {{ user.age }}
             </span>
             <span (click)="deleteUser(i)">X</span>
@@ -25,7 +25,7 @@ import { NewUser } from './NewUser';
         <label>Age:</label>
         <input [(ngModel)]="newUser.age" />
     </form>
-    <button (click)="addUser()">add user</button>
+    <button (click)="handleSave()">Save</button>
 </div>
 `
 })
@@ -36,13 +36,23 @@ export class DinosaurComponent implements OnInit {
   users: any[];
   usersOlderThan20: any[];
   newUser: NewUser = {
+    id: null,
     firstName: '',
     lastName: '',
     email: '',
     age: ''
   };
+  index: number;
 
   constructor(private dinosaurService: DinosaurService) { }
+
+  handleSave() {
+      if (this.newUser.id) {
+          this.updateUser();
+      } else {
+          this.addUser();
+      }
+  }
 
   addUser() {
       this.dinosaurService
@@ -88,15 +98,30 @@ export class DinosaurComponent implements OnInit {
         .catch(error => this.error = error);
   }
 
-  updateUser(index) {
-      console.log(index);
+  fillFormWithUserData(index) {
       this.newUser = new NewUser(
+          this.users[index].id,
           this.users[index].firstName,
           this.users[index].lastName,
           this.users[index].email,
           this.users[index].age
       );
-      console.log(this.newUser);
+      this.index = index;
+  }
+
+  updateUser() {
+      this.dinosaurService
+        .updateUser(this.newUser)
+        .then(result => {
+              console.log(result._body);
+              const updatedUser = JSON.parse(result._body);
+              this.users.map((user, index, usersArray) => {
+                  if (user.id === updatedUser.id) {
+                      usersArray[index] = updatedUser;
+                  }
+              });
+        })
+        .catch(error => console.log(error));
   }
 
   ngOnInit() {

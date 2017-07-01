@@ -39,6 +39,14 @@ export class DinosaurService {
       .toPromise()
   }
 
+  updateUser(user) {
+      return this.http.put(
+          this.hostUrl + '/users/' + user.id + '/',
+          user
+      )
+      .toPromise()
+  }
+
   private handleError(error: any) {
     console.error('An error occurred', error);
     return Promise.reject(error.message || error);
