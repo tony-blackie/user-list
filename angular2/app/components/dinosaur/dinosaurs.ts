@@ -113,7 +113,6 @@ export class DinosaurComponent implements OnInit {
       this.dinosaurService
         .updateUser(this.newUser)
         .then(result => {
-              console.log(result._body);
               const updatedUser = JSON.parse(result._body);
               this.users.map((user, index, usersArray) => {
                   if (user.id === updatedUser.id) {
@@ -125,7 +124,6 @@ export class DinosaurComponent implements OnInit {
   }
 
   ngOnInit() {
-    //this.getDinos();
       this.getUsers();
   }
 }
