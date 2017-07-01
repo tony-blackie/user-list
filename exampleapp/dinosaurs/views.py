@@ -14,13 +14,3 @@ class DinosaurViewSet(viewsets.ModelViewSet):
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-
-    def post(self, request, pk=None):
-        print(self)
-        print(request)
-        print(pk)
-
-    def get(self, request, pk=None):
-        print(self)
-        print(request)
-        print(pk)

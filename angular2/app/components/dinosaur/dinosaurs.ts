@@ -43,10 +43,12 @@ export class DinosaurComponent implements OnInit {
   constructor(private dinosaurService: DinosaurService) { }
 
   addUser() {
-      console.log(this.newUser);
       this.dinosaurService
       .addNewUser(this.newUser)
-      .then(result => console.log(result))
+      .then(result => {
+          const createdUser = JSON.parse(result._body);
+          this.users.push(createdUser);
+      });
   }
 
   deleteUser(index) {
