@@ -9,7 +9,9 @@ import { NewUser } from './NewUser';
 <div>
     <ul>
         <li *ngFor="let user of users; let i = index;">
-            {{user.firstName}} - {{ user.secondName }} - {{ user.age }}
+            <span (click)="updateUser(i)">
+                {{user.firstName}} - {{ user.lastName }} - {{ user.age }}
+            </span>
             <span (click)="deleteUser(i)">X</span>
         </li>
     </ul>
@@ -17,7 +19,7 @@ import { NewUser } from './NewUser';
         <label>Name:</label>
         <input [(ngModel)]="newUser.firstName" />
         <label>Last name:</label>
-        <input [(ngModel)]="newUser.secondName" />
+        <input [(ngModel)]="newUser.lastName" />
         <label>Email:</label>
         <input [(ngModel)]="newUser.email" />
         <label>Age:</label>
@@ -35,7 +37,7 @@ export class DinosaurComponent implements OnInit {
   usersOlderThan20: any[];
   newUser: NewUser = {
     firstName: '',
-    secondName: '',
+    lastName: '',
     email: '',
     age: ''
   };
@@ -84,6 +86,17 @@ export class DinosaurComponent implements OnInit {
               this.usersOlderThan20 = usersOlderThan20;
           })
         .catch(error => this.error = error);
+  }
+
+  updateUser(index) {
+      console.log(index);
+      this.newUser = new NewUser(
+          this.users[index].firstName,
+          this.users[index].lastName,
+          this.users[index].email,
+          this.users[index].age
+      );
+      console.log(this.newUser);
   }
 
   ngOnInit() {

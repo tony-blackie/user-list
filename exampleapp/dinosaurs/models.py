@@ -6,6 +6,6 @@ class Dinosaur(models.Model):
 
 class User(models.Model):
     firstName = models.TextField()
-    secondName = models.TextField()
+    lastName = models.TextField()
     email = models.TextField()
     age = models.TextField()
