@@ -4,7 +4,7 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
-export class DinosaurService {
+export class UserService {
   private apiURL = 'http://localhost:8000/dinosaurs/?format=json';
   private hostUrl = 'http://localhost:8000';
   private formatQuery = '?format=json';
