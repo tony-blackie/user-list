@@ -60,6 +60,7 @@ export class DinosaurComponent implements OnInit {
       .then(result => result.json())
       .then(createdUser => {
           this.users.push(createdUser);
+          this.clearForm();
       });
   }
 
@@ -119,8 +120,13 @@ export class DinosaurComponent implements OnInit {
                       usersArray[index] = updatedUser;
                   }
               });
+              this.clearForm();
         })
         .catch(error => console.log(error));
+  }
+
+  clearForm() {
+      this.newUser = new NewUser(null, '', '', '', '');
   }
 
   ngOnInit() {
