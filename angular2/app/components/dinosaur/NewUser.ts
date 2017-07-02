@@ -4,7 +4,7 @@ export class NewUser {
         public firstName : string,
         public lastName : string,
         public email : string,
-        public age : number
+        public age : string
     ) {
         this.id = id;
         this.firstName = firstName;

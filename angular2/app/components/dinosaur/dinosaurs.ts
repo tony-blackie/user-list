@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DinosaurService } from '../../services/dinosaurService';
-import { FormsModule } from '@angular/forms';
+import { UserService } from '../../services/userService';
+//import { FormsModule } from '@angular/forms';
 import { NewUser } from './NewUser';
 
 @Component({
@@ -44,7 +44,7 @@ export class DinosaurComponent implements OnInit {
   };
   index: number;
 
-  constructor(private dinosaurService: DinosaurService) { }
+  constructor(private userService: UserService) { }
 
   handleSave() {
       if (this.newUser.id) {
@@ -55,16 +55,16 @@ export class DinosaurComponent implements OnInit {
   }
 
   addUser() {
-      this.dinosaurService
+      this.userService
       .addNewUser(this.newUser)
-      .then(result => {
-          const createdUser = JSON.parse(result._body);
+      .then(result => result.json())
+      .then(createdUser => {
           this.users.push(createdUser);
       });
   }
 
   deleteUser(index) {
-      this.dinosaurService
+      this.userService
       .deleteUser(this.users[index])
       .then((result) => {
           console.log(result);
@@ -76,14 +76,14 @@ export class DinosaurComponent implements OnInit {
   }
 
   getDinos() {
-    this.dinosaurService
+    this.userService
         .getDinos()
         .then(dinos => this.dinos = dinos)
         .catch(error => this.error = error);
   }
 
   getUsers() {
-      this.dinosaurService
+      this.userService
         .getUsers()
         .then(users => {
               const usersOlderThan20 = [];
@@ -110,10 +110,10 @@ export class DinosaurComponent implements OnInit {
   }
 
   updateUser() {
-      this.dinosaurService
+      this.userService
         .updateUser(this.newUser)
-        .then(result => {
-              const updatedUser = JSON.parse(result._body);
+        .then(result => result.json())
+        .then(updatedUser => {
               this.users.map((user, index, usersArray) => {
                   if (user.id === updatedUser.id) {
                       usersArray[index] = updatedUser;
