@@ -58,6 +58,7 @@ export class DinosaurComponent implements OnInit {
       this.userService
       .addNewUser(this.newUser)
       .then(result => result.json())
+      //.then(result => result.json())
       .then(createdUser => {
           this.users.push(createdUser);
           this.clearForm();
