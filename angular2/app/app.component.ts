@@ -4,7 +4,7 @@ import { UserService } from './services/userService'
 
 @Component({
   selector: 'my-app',
-  template: `<h1>Hello {{name}}<span *ngIf="!itIsJuly">, DjangoCon</span>!</h1>
+  template: `<h1>Hello {{name}}<span *ngIf="itIsJuly">, DjangoCon</span>!</h1>
               <dinosaurs></dinosaurs>`,
   directives: [DinosaurComponent],
   providers: [UserService]
@@ -16,6 +16,6 @@ export class AppComponent {
 
   constructor() {
       var date = new Date()
-      this.itIsJuly = (date.getMonth() == 6 && date.getFullYear() == 2016)
+      this.itIsJuly = (date.getMonth() == 6 && date.getFullYear() == 2017)
   }
 }
