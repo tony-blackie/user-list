@@ -1,32 +1,33 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Http } from '@angular/http';
+
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
-export class DinosaurService {
+export class UserService {
   private apiURL = 'http://localhost:8000/dinosaurs/?format=json';
   private hostUrl = 'http://localhost:8000';
   private formatQuery = '?format=json';
 
-  constructor(private http: HttpClient) { }
-  
+  constructor(private http: Http) { }
+
   getDinos() {
     return this.http.get(this.apiURL)
               .toPromise()
-              .then(response => response)
+              .then(response => response.json())
               .catch(this.handleError);
   }
 
   deleteUser(user) {
       console.log(user);
       return this.http.delete(this.hostUrl + '/users/' + user.id)
-      .toPromise()
+      .toPromise();
   }
 
   getUsers() {
       return this.http.get(this.hostUrl + '/users/' + this.formatQuery)
         .toPromise()
-        .then(response => response)
+        .then(response => response.json())
         .catch(this.handleError);
   }
 
@@ -35,7 +36,7 @@ export class DinosaurService {
           this.hostUrl + '/users/',
           user
       )
-      .toPromise()
+      .toPromise();
   }
 
   updateUser(user) {
@@ -43,7 +44,7 @@ export class DinosaurService {
           this.hostUrl + '/users/' + user.id + '/',
           user
       )
-      .toPromise()
+      .toPromise();
   }
 
   private handleError(error: any) {

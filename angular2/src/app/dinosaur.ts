@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../../services/userService';
+import { UserService } from '../services/userService';
 //import { FormsModule } from '@angular/forms';
 import { NewUser } from './NewUser';
 
 @Component({
   selector: 'dinosaurs',
+  providers: [UserService],
   template: `
 <div>
     <ul>
@@ -17,13 +18,13 @@ import { NewUser } from './NewUser';
     </ul>
     <form>
         <label>Name:</label>
-        <input [(ngModel)]="newUser.firstName" />
+        <input [(ngModel)]="newUser.firstName" name="first" />
         <label>Last name:</label>
-        <input [(ngModel)]="newUser.lastName" />
+        <input [(ngModel)]="newUser.lastName" name="last" />
         <label>Email:</label>
-        <input [(ngModel)]="newUser.email" />
+        <input [(ngModel)]="newUser.email" name="email" />
         <label>Age:</label>
-        <input [(ngModel)]="newUser.age" />
+        <input [(ngModel)]="newUser.age" name="age" />
     </form>
     <button (click)="handleSave()">Save</button>
 </div>
