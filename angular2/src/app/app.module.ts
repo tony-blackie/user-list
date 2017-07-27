@@ -5,13 +5,15 @@ import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { UserComponent } from './dinosaur';
+import { UserComponent } from './user-list';
 import { UserService } from '../services/UserService';
+import { UserForm } from './user-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserComponent
+    UserComponent,
+    UserForm
   ],
   imports: [
       BrowserModule,
@@ -21,6 +23,10 @@ import { UserService } from '../services/UserService';
           {
             path: 'users',
             component: UserComponent
+          },
+          {
+            path: 'user/:id',
+            component: UserForm
           }
       ])
   ],
