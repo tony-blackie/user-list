@@ -4,7 +4,7 @@ import { UserService } from '../services/userService';
 import { NewUser } from './NewUser';
 
 @Component({
-  selector: 'dinosaurs',
+  selector: 'users',
   providers: [UserService],
   template: `
 <div>
@@ -31,7 +31,7 @@ import { NewUser } from './NewUser';
 `
 })
 
-export class DinosaurComponent implements OnInit {
+export class UserComponent implements OnInit {
   dinos: any[];
   error: any;
   users: any[];

@@ -5,13 +5,13 @@ import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { DinosaurComponent } from './dinosaur';
+import { UserComponent } from './dinosaur';
 import { UserService } from '../services/UserService';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DinosaurComponent
+    UserComponent
   ],
   imports: [
       BrowserModule,
@@ -20,7 +20,7 @@ import { UserService } from '../services/UserService';
       RouterModule.forRoot([
           {
             path: 'users',
-            component: DinosaurComponent
+            component: UserComponent
           }
       ])
   ],
