@@ -10,7 +10,7 @@ import { NewUser } from './NewUser';
 <div>
     <ul>
         <li *ngFor="let user of users; let i = index;">
-            <span (click)="fillFormWithUserData(i)">
+            <span [routerLink]="['/user', user.id]">
                 {{user.firstName}} - {{ user.lastName }} - {{ user.age }}
             </span>
             <span (click)="deleteUser(i)">X</span>
